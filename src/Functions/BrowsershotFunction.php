@@ -17,7 +17,17 @@ class BrowsershotFunction extends LambdaFunction
 
     public function name()
     {
-        return 'browsershot';
+        return config('sidecar-browsershot.function_name') ?? 'browsershot';
+    }
+
+    public function prefix()
+    {
+        return config('sidecar-browsershot.function_prefix') ?? parent::prefix();
+    }
+
+    public function nameWithPrefix()
+    {
+        return config('sidecar-browsershot.function_name_with_prefix') ?? parent::nameWithPrefix();
     }
 
     public function package()

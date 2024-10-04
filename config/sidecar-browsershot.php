@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'function_name' => env('SIDECAR_BROWSERSHOT_FUNCTION_NAME', 'browsershot'),
+    'function_prefix' => env('SIDECAR_BROWSERSHOT_FUNCTION_PREFIX'),
+    'function_name_with_prefix' => env('SIDECAR_BROWSERSHOT_FUNCTION_NAME_WITH_PREFIX'),
+
     /**
      * Define the allocated memory available to SidecarBrowsershot in megabytes. (Defaults to 2GB)
      * We suggest to allocate at least 513 MB of memory to push Chrome/Puppeteer out of "low-spec" mode.
