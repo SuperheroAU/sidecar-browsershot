@@ -14,20 +14,23 @@ jobs:
       max-parallel: 1
       matrix:
         os: [ubuntu-latest]
-        php: [8.2, 8.3]
-        laravel: [10.*, 11.*]
+        php: [8.2, 8.3, 8.4]
+        laravel: [12.*, 11.*, 10.*]
+        browsershot: [4.*, 5.*]
         stability: [prefer-lowest, prefer-stable]
         include:
           - laravel: 10.*
             testbench: ^8.0
           - laravel: 11.*
             testbench: ^9.0
+          - laravel: 12.*
+            testbench: ^10.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -43,7 +46,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "spatie/browsershot:${{ matrix.browsershot }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
           npm ci
 

@@ -5,7 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/stefanzweifel/sidecar-browsershot/compare/v2.3.3...HEAD)
+## [Unreleased](https://github.com/stefanzweifel/sidecar-browsershot/compare/v2.6.0...HEAD)
+
+## [v2.6.0](https://github.com/stefanzweifel/sidecar-browsershot/compare/v2.5.1...v2.6.0) - 2025-05-08
+
+### Added
+
+- Add Support for Laravel 12 ([#139](https://github.com/stefanzweifel/sidecar-browsershot/pull/139))
+
+## [v2.5.1](https://github.com/stefanzweifel/sidecar-browsershot/compare/v2.5.0...v2.5.1) - 2025-03-23
+
+### Changed
+
+- Update Chrome versions ([#140](https://github.com/stefanzweifel/sidecar-browsershot/pull/140))
+
+## [v2.5.0](https://github.com/stefanzweifel/sidecar-browsershot/compare/v2.4.0...v2.5.0) - 2024-12-05
+
+### Added
+
+- Add support for spatie/browsershot v5 ([#137](https://github.com/stefanzweifel/sidecar-browsershot/pull/137))
+
+## [v2.4.0](https://github.com/stefanzweifel/sidecar-browsershot/compare/v2.3.3...v2.4.0) - 2024-11-13
+
+### Added
+
+- Add Support for PHP 8.4 ([#136](https://github.com/stefanzweifel/sidecar-browsershot/pull/136))
 
 ## [v2.3.3](https://github.com/stefanzweifel/sidecar-browsershot/compare/v2.3.2...v2.3.3) - 2024-05-16
 
