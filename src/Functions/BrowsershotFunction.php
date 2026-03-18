@@ -5,6 +5,7 @@ namespace Wnx\SidecarBrowsershot\Functions;
 use Hammerstone\Sidecar\Architecture;
 use Hammerstone\Sidecar\LambdaFunction;
 use Hammerstone\Sidecar\Package;
+use Hammerstone\Sidecar\Runtime;
 use Hammerstone\Sidecar\WarmingConfig;
 use Illuminate\Support\Str;
 
@@ -50,8 +51,6 @@ class BrowsershotFunction extends LambdaFunction
         // Check if the custom fonts folder exists.
         if (file_exists($fontDirectory)) {
             // Loop through all files in the custom fonts folder.
-
-            /** @var array $fontFiles */
             $fontFiles = scandir($fontDirectory);
 
             foreach ($fontFiles as $file) {
@@ -96,7 +95,7 @@ class BrowsershotFunction extends LambdaFunction
      */
     public function runtime()
     {
-        return 'nodejs20.x';
+        return Runtime::NODEJS_22;
     }
 
     /**
@@ -150,16 +149,22 @@ class BrowsershotFunction extends LambdaFunction
         $region = config('sidecar.aws_region');
 
         if ($region === 'ap-northeast-2') {
-            $chromeAwsLambdaVersion = 49;
+            $chromeAwsLambdaVersion = 52;
         } else {
-            $chromeAwsLambdaVersion = 50;
+            $chromeAwsLambdaVersion = 53;
+        }
+
+        if ($region === 'us-east-1') {
+            $sidecarBrowsershotLayerVersion = 5;
+        } else {
+            $sidecarBrowsershotLayerVersion = 4;
         }
 
         // Add Layers that each contain `puppeteer-core` and `@sparticuz/chromium`
         // https://github.com/stefanzweifel/sidecar-browsershot-layer
         // https://github.com/shelfio/chrome-aws-lambda-layer
         return [
-            "arn:aws:lambda:{$region}:821527532446:layer:sidecar-browsershot-layer:2",
+            "arn:aws:lambda:{$region}:821527532446:layer:sidecar-browsershot-layer:{$sidecarBrowsershotLayerVersion}",
             "arn:aws:lambda:{$region}:764866452798:layer:chrome-aws-lambda:{$chromeAwsLambdaVersion}",
         ];
     }
